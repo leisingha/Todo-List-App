@@ -23,6 +23,6 @@
 
 ## UI Layout
 
-
+![alt text](todoList.jpg)
 
 ## Code Structure
