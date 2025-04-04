@@ -19,7 +19,7 @@ class Project{
         this.#todoLists.push(obj);
     }
     removeTodoList(id){
-        let index = this.#todoLists.filter( (todoList) => todoList.id == id);
+        let index = this.#todoLists.indexOf(this.#todoLists.filter( (todoList) => todoList.id == id)[0]);
         this.#todoLists.splice(index,1);
     }
     get todoLists(){
