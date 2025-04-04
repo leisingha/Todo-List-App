@@ -32,5 +32,6 @@ Create Todo item class {title, description, dueDate and priority} | Module
 Create Project class { todoLists[], description } | Module
 Create DomController Class | Module
 
+Main Logic:
 
 
