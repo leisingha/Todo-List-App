@@ -1,41 +1,64 @@
 //todo.js
 
 class Todo {
-    #id;
-    #isComplete;
-    
-    constructor (title, description, dueDate, priority){
+    #id = null;
+    #isComplete = false;
+    #title;
+    #notes;
+    #dueDate;
+    #priority;
+
+    constructor (title, notes, dueDate, priority){
         this.title = title;
-        this.description = description;
+        this.notes = notes;
         this.dueDate = dueDate;
         this.priority = priority;
     }
 
     get title(){
-        return this.title;
+        return this.#title;
     }
-    set newTitle(val){
-        this.title = val;
+    set title(val){
+        this.#title = val;
     }
 
-    get description(){
-        return this.description;
+    get notes(){
+        return this.#notes;
     }
-    set newDescription(text){
-        this.description = text;
+    set notes(text){
+        this.#notes = text;
     }
 
     get dueDate(){
-        return this.dueDate;
+        return this.#dueDate;
     }
     set dueDate(date){
-        this.dueDate = date;
+        this.#dueDate = date;
     }
 
     get priority(){
-        return this.priority;
+        return this.#priority;
     }
-    set newPriority(val){
-        this.priority = val;
+    set priority(val){
+        this.#priority = val;
     }
+
+    toggleComplete(){
+        this.#isComplete = !(this.#isComplete);
+        return this.#isComplete;
+    }
+    get isComplete(){
+        return this.#isComplete;
+    }
+
+    set id(val){
+        this.#id = val;
+    }
+    get id(){
+        return this.#id;
+    }
+
 }
+
+
+
