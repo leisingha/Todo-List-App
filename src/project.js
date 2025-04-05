@@ -1,6 +1,6 @@
 //project.js
 
-class Project{
+export class Project{
     #id = null;
     #todoLists = [];
     
@@ -26,3 +26,4 @@ class Project{
         return this.#todoLists;
     }
 }
+

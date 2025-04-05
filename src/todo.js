@@ -1,6 +1,6 @@
 //todo.js
 
-class Todo {
+export class Todo {
     #id = null;
     #isComplete = false;
     #title;
@@ -59,6 +59,7 @@ class Todo {
     }
 
 }
+
 
 
 

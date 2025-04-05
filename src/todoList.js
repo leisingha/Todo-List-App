@@ -1,6 +1,6 @@
 //todoList.js
 
-class TodoList{
+export class TodoList{
     #id = null;
     #todos = []
     #title;
