@@ -58,7 +58,7 @@ export class Todo {
         this.#isComplete = !(this.#isComplete);
         return this.#isComplete;
     }
-    get isComplete(){
+    isComplete(){
         return this.#isComplete;
     }
 

@@ -22,9 +22,10 @@ export class Container{
 export class Project{
     #id;
     #container;
+    #title;
     
     constructor(title){
-        this.title = title;
+        this.#title = title;
         this.#id = generateId()
         this.#container = new Container;
     }
@@ -34,10 +35,10 @@ export class Project{
     }
 
     get title(){
-        return this.title;
+        return this.#title;
     }
     set title(val){
-        this.title = val;
+        this.#title = val;
     }
 
     addToContainer(obj){
