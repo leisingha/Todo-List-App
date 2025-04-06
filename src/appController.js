@@ -33,23 +33,23 @@ export class AppController{
     }
     
     static addToProject(project, todoList){
-        project.addTodoList(todoList);
+        project.addToContainer(todoList);
     }
 
     static addToTodolist(todoList, todo){
-        todoList.addTodo(todo);
+        todoList.addToContainer(todo);
     }
 
     static removeProject(project){
         this.#storage.pop(project);
     }
 
-    static removeTodoList(project,todoList){
-        project.removeTodoList(todoList);
+    static removeTodoList(project,id){
+        project.removeFromContainer(id);
     }
 
-    static removeTodo(todoList, todo){
-        todoList.removeTodo(todo);
+    static removeTodo(todoList, id){
+        todoList.removeFromContainer(id);
     }
 
 }   
