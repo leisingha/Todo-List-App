@@ -1,7 +1,9 @@
 //todo.js
 
+import { generateId } from "./project.js";
+
 export class Todo {
-    #id = null;
+    #id;
     #isComplete = false;
     #title;
     #notes;
@@ -13,6 +15,15 @@ export class Todo {
         this.notes = notes;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.#id = generateId();
+        
+    }
+
+    generateId(){
+        return crypto.randomUUID()
+    }
+    get id(){
+        return this.#id;
     }
 
     get title(){
@@ -49,13 +60,6 @@ export class Todo {
     }
     get isComplete(){
         return this.#isComplete;
-    }
-
-    set id(val){
-        this.#id = val;
-    }
-    get id(){
-        return this.#id;
     }
 
 }

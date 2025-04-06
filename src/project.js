@@ -1,29 +1,55 @@
 //project.js
 
+export function generateId(){
+    return crypto.randomUUID();
+}
+
+export class Container{
+    #items = [];
+
+    addToContainer(obj){
+        this.#items.push(obj);
+    }
+    removeFromContainer(id){
+        let index = this.#items.indexOf(this.#items.filter( (element) => element.id == id)[0]);
+        this.#items.splice(index,1);
+    }
+    get items(){
+        return this.#items;
+    }
+}
+
 export class Project{
-    #id = null;
-    #todoLists = [];
+    #id;
+    #container;
     
     constructor(title){
         this.title = title;
+        this.#id = generateId()
+        this.#container = new Container;
     }
 
     get id(){
         return this.#id;
     }
-    set id(val){
-        this.#id = val;
+
+    get title(){
+        return this.title;
+    }
+    set title(val){
+        this.title = val;
     }
 
-    addTodoList(obj){
-        this.#todoLists.push(obj);
+    addToContainer(obj){
+        this.#container.addToContainer(obj)
     }
-    removeTodoList(id){
-        let index = this.#todoLists.indexOf(this.#todoLists.filter( (todoList) => todoList.id == id)[0]);
-        this.#todoLists.splice(index,1);
+    removeFromContainer(id){
+        this.#container.removeFromContainer(id);
     }
-    get todoLists(){
-        return this.#todoLists;
+    get container(){
+        return this.#container.items();
     }
 }
+
+
 

@@ -1,19 +1,20 @@
 //todoList.js
 
+import { generateId, Container } from "./project.js";
+
 export class TodoList{
     #id = null;
-    #todos = []
     #title;
     #description;
+    #container;
 
     constructor(title, description){
         this.title = title;
         this.description = description;
+        this.#container = new Container;
+        this.#id = generateId();
     }
 
-    set id(num){
-        this.#id = num;
-    }
     get id(){
         return this.#id;
     }
@@ -29,17 +30,16 @@ export class TodoList{
         return this.#title;
     }
     set title(text){
-        return this.#title;
+        this.#title = text;
     }
 
-    addTodo(obj){
-        this.#todos.push(obj);
+    addToContainer(obj){
+        this.#container.addToContainer(obj);
     }
-    removeTodo(id){
-        let index = this.#todos.indexOf(this.#todos.filter((todo) => todo.id == id)[0])
-        this.#todos.splice(index,1)
+    removeFromContainer(id){
+        this.#container.removeFromContainer(id);
     }
-    get todos(){
-        return this.#todos
+    get container(){
+        return this.#container.items();
     }
 }

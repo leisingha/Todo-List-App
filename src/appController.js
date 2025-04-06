@@ -22,6 +22,10 @@ export class AppController{
         const todoList = new TodoList(title, description)
         return todoList;
     }
+
+    static printAllProjects(){
+        this.#storage.forEach(element => console.log(element));
+    }
     
     static createNewTodo(title, notes, dueDate, priority){
         const todo = new Todo(title, notes, dueDate, priority);
