@@ -2,10 +2,11 @@
 
 import { AppController } from "./appController.js";
 
+localStorage.clear();
+
 const proj = AppController.createNewProject('Default');
+console.log(localStorage.getItem(localStorage.key(0)));
 AppController.printAllProjects();
-
-
 
 const todoList = AppController.createNewTodoList('To do List', 'Regular Description');
 AppController.addToProject(proj,todoList);
@@ -19,3 +20,5 @@ console.log(todo.isComplete())
 AppController.removeTodo(todoList, todo);
 AppController.removeTodoList(proj, todoList);
 AppController.removeProject(proj);
+
+console.log(proj)

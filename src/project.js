@@ -4,6 +4,24 @@ export function generateId(){
     return crypto.randomUUID();
 }
 
+export function serializeProject(project){
+    return {
+        title: project.title,
+        id: project.id,
+        container: project.container
+    }
+}
+
+export function deSerializeProject(project){
+    const newProject = new Project(project.title)
+    project.container.forEach(element => {
+        newProject.addToContainer(element);
+    });
+    newProject.id = project.id;
+    return newProject;
+    
+}
+
 export class Container{
     #items = [];
 
@@ -33,6 +51,9 @@ export class Project{
     get id(){
         return this.#id;
     }
+    set id(val){
+        this.#id = val;
+    }
 
     get title(){
         return this.#title;
@@ -48,8 +69,8 @@ export class Project{
         this.#container.removeFromContainer(id);
     }
     get container(){
-        return this.#container.items();
-    }
+        return this.#container.items;
+    }   
 }
 
 

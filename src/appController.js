@@ -1,11 +1,15 @@
 //appController.js
 
-import { Project } from "./project.js";
+import { Project, serializeProject, deSerializeProject } from "./project.js";
 import { Todo } from "./todo.js";
 import { TodoList } from "./todoList.js";
 
+function populateStorage(value){
+
+    localStorage.setItem(value.key, JSON.stringify(serializeProject(value)));
+}
+
 export class AppController{
-    static #storage = []
     
     constructor(){
 
@@ -13,7 +17,7 @@ export class AppController{
     
     static createNewProject(title){
         const project = new Project(title);
-        this.#storage.push(project)
+        populateStorage(project);
         return project;
     }
 
@@ -24,7 +28,10 @@ export class AppController{
     }
 
     static printAllProjects(){
-        this.#storage.forEach(element => console.log(element));
+        for (let index = 0; index < localStorage.length; index++){
+            let key = localStorage.key(index);
+            console.log(deSerializeProject(JSON.parse(localStorage.getItem(key))));
+        }
     }
     
     static createNewTodo(title, notes, dueDate, priority){
@@ -34,6 +41,7 @@ export class AppController{
     
     static addToProject(project, todoList){
         project.addToContainer(todoList);
+        populateStorage(project);
     }
 
     static addToTodolist(todoList, todo){
@@ -41,7 +49,7 @@ export class AppController{
     }
 
     static removeProject(project){
-        this.#storage.pop(project);
+        localStorage.removeItem(project.id);
     }
 
     static removeTodoList(project,id){
