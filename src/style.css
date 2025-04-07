@@ -68,7 +68,7 @@ main{
 .sidebar{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .sidebar ul, .content p{
@@ -108,6 +108,7 @@ input[type='search']{
     text-align: center;
     box-shadow: 4px 4px #393939;
     transition: all 0.5s ease;
+    margin-top: auto;
 }
 
 input[type='search']:focus{
