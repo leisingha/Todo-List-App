@@ -4,3 +4,118 @@
     padding: 0;
 }
 
+:root{
+    --primary-colour:#000000;
+    --secondary-colour: #131111;
+    --tertiar-colour: #696868;
+}
+
+body{
+    background-color: var(--primary-colour);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+header{
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+header nav{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav button{
+    width: 90px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #393939;
+    background: var(--Seconday-Colour, #131111);
+    font-family: inherit;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 3px 3px #393939;
+}
+nav button:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
+}
+
+main{
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 1fr 2.25fr;
+    gap: 1rem;
+}
+
+
+
+.sidebar, .content{
+    border-radius: 15px;
+    border: 1px solid #393939;
+    background: var(--secondary-colour);
+    margin: 4rem 0;
+    padding: 2rem;
+    box-shadow: 7px 7px #393939;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul, .content p{
+    color: var(--tertiar-colour);
+}
+
+.add-btn{
+    color: #fafafa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #393939;
+    background: var(--Seconday-Colour, #131111);
+    box-shadow: 4px 4px #393939;
+    cursor: pointer;
+    margin: 35px 0;
+    color: var(--tertiar-colour);
+}
+
+.add-btn:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
+}
+
+ul{
+    list-style: none;
+}
+
+input[type='search']{
+    width: 100%;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #393939;
+    background: var(--Seconday-Colour, #131111);
+    font-family: inherit;
+    color: white;
+    text-align: center;
+    box-shadow: 4px 4px #393939;
+    transition: all 0.5s ease;
+}
+
+input[type='search']:focus{
+    border: 1px solid whitesmoke;
+    box-shadow: 4px 4px whitesmoke;
+    outline: none;
+}
+input[type='search']::-webkit-search-cancel-button {
+    display: none; 
+}
+

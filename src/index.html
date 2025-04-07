@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            Todo List
+            <h1>Todo List</h1>
             <button>
                 Info
             </button>
@@ -16,24 +19,32 @@
     </header>
     <main>
         <div class="sidebar">
-            <h1>
+            <h2>
                 Projects
-            </h1>
-            <ul class="project-list">
-
-            </ul>
-            <button class="add-project-btn">
-                Add Project
-            </button>
-            <input type="search">
+            </h2>
+            <div>
+                <ul class="project-list">
+                    <li>Tuesday Agenda</li>
+                    <li>Exam Preparation</li>
+                    <li>Sunday Agenda</li>
+                    <li>Grocery List</li>
+                </ul>
+                <button class="add-btn">
+                    Add Project
+                </button>
+            </div>
+            <input type="search" placeholder="Search">
         </div>
         <div class="content">
-            <h1>
+            <h2>
                 Tuesday Agenda
-            </h1>
+            </h2>
+            <p>
+                Some random description about the Todo List
+            </p>
             <ul>
                 <li>
-                    <button>Add Task</button>
+                    <button class="add-btn">Add Task</button>
                 </li>
             </ul>
         </div>
