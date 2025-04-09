@@ -20,7 +20,7 @@
     <main>
         <div class="sidebar">
             <h2>
-                Projects
+                Projects 📥
             </h2>
             <ul class="project-list">
                 <li>Tuesday Agenda</li>
@@ -42,11 +42,43 @@
             <p>
                 Some random description about the Todo List
             </p>
-            <ul class="todoss">
+            <ul class="todos">
                 <li>
-                    <button class="add-btn">Add Task</button>
+                    <button class="add-btn" id="addTodo-btn">Add Task</button>
                 </li>
             </ul>
+            <dialog>
+                <form action="" id="todo-form">
+                    <h2>
+                        Add To-do Item 📝
+                    </h2>
+    
+                    <div>
+                        <label for="text-input">Title 🔤</label>
+                        <input type="text" name="text-input" id="text-input">
+                    </div>
+    
+                    <div>
+                        <label for="date-input">Due Date 📅</label>
+                        <input type="date" name="date-input" id="date-input">
+                    </div>
+    
+                    <div>
+                        <label for="priority-input">Priority ‼️</label>
+                        <select name="priority-input" id="priority-input">
+                            <option value="">Choose Priority:</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+    
+                    <button id="btn-confirm" type="submit">
+                        Confirm
+                    </button>
+                    
+                </form>
+            </dialog>
         </div>
     </main>
 </body>

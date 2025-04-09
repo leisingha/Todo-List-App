@@ -1,7 +1,9 @@
 //main.js
 
+import { DomController } from "./domController.js"
 import { AppController } from "./appController.js";
 import './style.css'
+
 
 localStorage.clear();
 
@@ -23,4 +25,6 @@ localStorage.clear();
 // AppController.removeProject(proj);
 
 // console.log(proj)
+
+DomController.renderTodoForm()
 

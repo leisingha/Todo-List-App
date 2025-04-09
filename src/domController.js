@@ -1,7 +1,7 @@
 //domController.js
 
 
-class DomController{
+export class DomController{
     constructor(){
 
     }
@@ -63,11 +63,11 @@ class DomController{
     }
 
     static renderTodoForm(){
-        const form = document.createElement('form');
-        const heading = document.createElement('h1');
-        const input = document.createElement('input');
-        const label = document.createElement('label');
+        const addBtn = document.querySelector('#addTodo-btn');
+        const dialog = document.querySelector('dialog');
+        addBtn.addEventListener('click', ()=> {
+            dialog.showModal();
+        })
     }
 
-    static
 }
