@@ -8,11 +8,14 @@
     --primary-colour:#000000;
     --secondary-colour: #131111;
     --tertiary-colour: #696868;
+    --header-colour: #fdfaf6dd;
+    --text-colour: #8b8a8a;
+
 }
 
 body{
     background-color: var(--primary-colour);
-    color: #fdfaf6d4;
+    color: var(--header-colour);
     font-family: "Poppins", sans-serif;
     height: 100vh;
     display: grid;
@@ -36,7 +39,7 @@ nav button{
     flex-shrink: 0;
     border-radius: 8px;
     border: 1px solid #393939;
-    background: var(--Seconday-Colour, #131111);
+    background: var(--secondary-colour);
     font-family: inherit;
     color: white;
     font-size: 1.25rem;
@@ -72,7 +75,7 @@ main{
 }
 
 .sidebar ul, .content p{
-    color: var(--tertiary-colour);
+    color: var(--text-colour);
 }
 
 .add-btn{
@@ -103,10 +106,11 @@ input[type='search']{
     flex-shrink: 0;
     border-radius: 8px;
     border: 1px solid #393939;
-    background: var(--Seconday-Colour, #131111);
+    background: var(--secondary-colour);
     font-family: inherit;
     color: white;
-    text-align: center;
+    text-align: left;
+    padding-left: 1rem;
     box-shadow: 4px 4px #393939;
     transition: all 0.5s ease;
     margin-top: auto;
@@ -138,7 +142,7 @@ opacity: 0.5;
 form {
 padding: 20px;
 background: var(--secondary-colour);
-color: var(--tertiary-colour);
+color: var(--text-colour);
 display: flex;
 flex-direction: column;
 align-items: flex-start;
@@ -148,7 +152,7 @@ border-radius: 8px;
 }
 
 form h2 {
-color: #fdfaf6d4;
+color: var(--header-colour);
 font-weight: 900;
 font-size: 20px;
 align-self: center;
@@ -178,6 +182,10 @@ font-size: 15px;
 font-weight: 600;
 padding: 5px 10px;
 transition: all 0.5s ease;
+}
+
+input[type="date"] {
+    accent-color: var(--tertiary-colour); /* Change this to your desired color */
 }
 
 
