@@ -184,10 +184,6 @@ padding: 5px 10px;
 transition: all 0.5s ease;
 }
 
-input[type="date"] {
-    accent-color: var(--tertiary-colour); /* Change this to your desired color */
-}
-
 
 #btn-confirm {
 margin: 20px auto 0 auto;

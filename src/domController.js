@@ -5,19 +5,26 @@ export class DomController{
     constructor(){
 
     }
+    static #projectList = document.querySelector('.project-list');
+    static #todoItems = document.querySelector('.todos');
+    
 
-    static addProject(obj){
-        const project = document.createElement('li')
-        project.textContent = obj.title;
-        project.dataset.id = obj.id;
+    static addProject(projectObj){
+        const project = document.createElement('li');
+        const todoList = document.createElement('ul');
+
+        project.textContent = projectObj.title;
+        project.dataset.id = projectObj.id;
+
+        project.appendChild(todoList);
+        this.#projectList.appendChild(project);
     }
 
-    static removeProject(id){
-        const projectList = document.querySelector('.project-list')
-        const projectItems = document.querySelectorAll('.project-list li');
+    static removeProject(projectObj){
+        const projectItems = this.#projectList.querySelectorAll('li');
         projectItems.forEach((item) => {
-            if(item.dataset.id == id){
-                projectList.removeChild(item);
+            if(item.dataset.id == projectObj.id){
+                this.#projectList.removeChild(item);
             }
         })
     }
@@ -26,40 +33,58 @@ export class DomController{
         obj.textContent = title;
     }
 
-    static addTodoList(obj){
-        const todoList = document.createElement(li);
-        todoList.textContent = obj.title;
-        todoList.dataset.id = obj.id;
+    static addTodoList(projectObj, todoListObj){
+        const todoList = document.createElement('li');
+        todoList.textContent = todoListObj.title;
+        todoList.dataset.id = todoListObj.id;
+
+        const projectItems = this.#projectList.querySelectorAll('li');
+        projectItems.forEach((item) => {
+            if(item.dataset.id == projectObj.id){
+                item.appendChild(todoList);
+            }
+        })
+
     }
 
-    static removeTodolist(){
-        const todoList = document.querySelector('.todo-list');
-        const todoListItems = document.querySelectorAll('todo-list li');
-        todoListItems.forEach((item) =>{
-            if(item.dataset.id == id){
-                todoList.removeChild(item);
+    static removeTodolist(projectObj, todoListObj){
+        const projectItems = this.#projectList.querySelectorAll('li');
+
+        projectItems.forEach((item) =>{
+            if(item.dataset.id == projectObj.id){
+                const todoLists = item.querySelectorAll('li');
+                todoLists.forEach(todoList => {
+                    if(todoList.dataset.id == todoListObj.id){
+                        item.removeChild(todoList);
+                    }
+                }) 
             }
         })
     }
 
-    static addTodo(obj){
-        const todo = document.createElement('li')
-        todo.textContent = obj.title;
-        project.dataset.id = obj.id;
+    static addTodo(todoObj){
+        const todo = document.createElement('li');
+        const date = document.createElement('div');
+        const priority = document.createElement('div');
+
+        todo.textContent = todoObj.title;
+        date.textContent = todoObj.date;
+        priority.textContent = todoObj.priority;
+
+        todo.appendChild(date);
+        todo.appendChild(priority);
+        this.#todoItems.append(todo);
+
+        
     }
 
-    static updateTodo(obj, attr){
-        const todoListItems = document.querySelectorAll('.todos li');
-        const property = document.querySelector(`.todos li #${attr}`)
-        todoListItems.forEach((item) =>{
-            if(item.dataset.id == obj.id){
-                property.textContent = obj[attr];
+    static removeTodo(todoObj){
+        const todoItems = this.#todoItems.querySelectorAll('li')
+        todoItems.forEach((item) =>{
+            if(item.dataset.id == todoObj.id){
+                this.#todoItems.removeChild(item);
             }
         })
-    }
-
-    static removeTodo(){
-
     }
 
     static renderTodoForm(){
