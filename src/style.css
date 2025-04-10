@@ -7,12 +7,12 @@
 :root{
     --primary-colour:#000000;
     --secondary-colour: #131111;
-    --tertiar-colour: #696868;
+    --tertiary-colour: #696868;
 }
 
 body{
     background-color: var(--primary-colour);
-    color: white;
+    color: #fdfaf6d4;
     font-family: "Poppins", sans-serif;
     height: 100vh;
     display: grid;
@@ -72,7 +72,7 @@ main{
 }
 
 .sidebar ul, .content p{
-    color: var(--tertiar-colour);
+    color: var(--tertiary-colour);
 }
 
 .add-btn{
@@ -84,7 +84,7 @@ main{
     box-shadow: 4px 4px #393939;
     cursor: pointer;
     margin: 35px 0;
-    color: var(--tertiar-colour);
+    color: var(--tertiary-colour);
     cursor: pointer;
 }
 
@@ -126,7 +126,8 @@ dialog{
 margin: auto;
 background-color: #EAEDF0;
 border-radius: 10px;
-border: none;
+border: 1px solid #393939;
+box-shadow: 10px 10px #393939;
 }
 
 ::backdrop{
@@ -137,19 +138,17 @@ opacity: 0.5;
 form {
 padding: 20px;
 background: var(--secondary-colour);
-color: var(--tertiar-colour);
+color: var(--tertiary-colour);
 display: flex;
 flex-direction: column;
 align-items: flex-start;
 justify-content: center;
 gap: 20px;
 border-radius: 8px;
-
-
 }
 
 form h2 {
-color: var(--tertiar-colour);
+color: #fdfaf6d4;
 font-weight: 900;
 font-size: 20px;
 align-self: center;
@@ -173,7 +172,7 @@ height: 40px;
 border-radius: 5px;
 border: 1px solid #393939;
 background-color: var(--secondary-colour);
-color: var(--tertiar-colour);
+color: var(--tertiary-colour);
 box-shadow: 4px 4px #393939;
 font-size: 15px;
 font-weight: 600;
@@ -192,7 +191,7 @@ background-color: var(--bg-color);
 box-shadow: 4px 4px #393939;
 font-size: 17px;
 font-weight: 600;
-color: var(--tertiar-colour);
+color: var(--tertiary-colour);
 cursor: pointer;
 }
 
