@@ -185,7 +185,7 @@ transition: all 0.5s ease;
 }
 
 
-#btn-confirm {
+#btn-cancel, #btn-confirm {
 margin: 20px auto 0 auto;
 width: 120px;
 height: 40px;
@@ -199,8 +199,13 @@ color: var(--tertiary-colour);
 cursor: pointer;
 }
 
-#btn-confirm:active {
+#btn-cancel:active, #btn-confirm:active {
     box-shadow: none;
     transform: translate(3px, 3px);
+}
+
+.btn-pair{
+    justify-content: center;
+    width: 100%;
 }
   

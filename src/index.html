@@ -24,8 +24,8 @@
             </h2>
             <ul class="project-list">
                 <li>
-                    Tuesday Agenda
-                    <ul>
+                    Tuesday Agenda <button id="addProjectList-btn" class="add-btn-inline">add</button>
+                    <ul class="styledList">
                         Placeholder Todo-list
                     </ul>
                 </li>
@@ -33,11 +33,61 @@
                 <li>Sunday Agenda</li>
                 <li>Grocery List</li>
                 <li>
-                    <button class="add-btn">
+                    <button class="add-btn" id="addProject-btn">
                         Add Project
                     </button>
                 </li>
             </ul>
+            <dialog id="projectListDialog">
+                <form action="" id="project-form">
+                    <h2>
+                        Add Project 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+
+                    
+                </form>
+            </dialog>
+
+            <dialog id="todoListDialog">
+                <form action="" id="todoList-form">
+                    <h2>
+                        Add To-do List 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input">
+                    </div>
+    
+                    <div>
+                        <label for="desc-input">Description 📑</label>
+                        <input type="text" name="desc-input" id="desc-input">
+                    </div>
+    
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
             <input type="search" placeholder="Search">
         </div>
         <div class="content">
@@ -52,7 +102,7 @@
                     <button class="add-btn" id="addTodo-btn">Add Task</button>
                 </li>
             </ul>
-            <dialog>
+            <dialog id="todoDialog">
                 <form action="" id="todo-form">
                     <h2>
                         Add To-do Item 📝
@@ -78,9 +128,14 @@
                         </select>
                     </div>
     
-                    <button id="btn-confirm" type="submit">
-                        Confirm
-                    </button>
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
                     
                 </form>
             </dialog>

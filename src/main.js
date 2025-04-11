@@ -7,24 +7,29 @@ import './style.css'
 
 localStorage.clear();
 
-// const proj = AppController.createNewProject('Default');
-// console.log(localStorage.getItem(localStorage.key(0)));
-// AppController.printAllProjects();
+DomController.renderProjectListForm();
+const confirmProjectBtn = document.querySelector('#project-form #btn-confirm');
+const cancelProjectBtn = document.querySelector('#project-form #btn-cancel')
+const projectForm = document.querySelector('#project-form');
+const dialog = document.querySelector('#projectListDialog');
 
-// const todoList = AppController.createNewTodoList('To do List', 'Regular Description');
-// AppController.addToProject(proj,todoList);
+confirmProjectBtn.addEventListener('click',(e)=>{
+    if(!projectForm.checkValidity()){
+        return;
+    }
+    e.preventDefault()
+    const data = new FormData(projectForm);
+    const newProject = AppController.createNewProject(data.get('title-input'));
+    console.log(newProject);
+    dialog.close()
+})
 
-// const todo = AppController.createNewTodo('example 1', 'Just Notes', '12/12/25', 'low'); 
-// AppController.addToTodolist(todoList, todo);
+cancelProjectBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
+    dialog.close()
+})
 
-// todo.toggleComplete();
-// console.log(todo.isComplete())
 
-// AppController.removeTodo(todoList, todo);
-// AppController.removeTodoList(proj, todoList);
-// AppController.removeProject(proj);
-
-// console.log(proj)
-
-DomController.renderTodoForm()
+DomController.renderTodoListForm()
+DomController.renderTodoForm();
 

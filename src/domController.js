@@ -87,12 +87,31 @@ export class DomController{
         })
     }
 
+    static renderProjectListForm(){
+        const addBtn = document.querySelector('#addProject-btn');
+        const dialog = document.querySelector('#projectListDialog');
+        addBtn.addEventListener('click', ()=>{
+            dialog.showModal();
+        })
+    }
+
+    static renderTodoListForm(){
+        const addBtn = document.querySelector('#addProjectList-btn');
+        const dialog = document.querySelector('#todoListDialog'); 
+        
+        addBtn.addEventListener('click', ()=>{
+            dialog.showModal();
+        })
+        
+    }
+
     static renderTodoForm(){
         const addBtn = document.querySelector('#addTodo-btn');
-        const dialog = document.querySelector('dialog');
+        const dialog = document.querySelector('#todoDialog');
         addBtn.addEventListener('click', ()=> {
             dialog.showModal();
         })
     }
+
 
 }
