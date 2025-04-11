@@ -4,9 +4,9 @@ import { Project, serializeProject, deSerializeProject } from "./project.js";
 import { Todo } from "./todo.js";
 import { TodoList } from "./todoList.js";
 
-function populateStorage(value){
+function populateStorage(project){
 
-    localStorage.setItem(value.key, JSON.stringify(serializeProject(value)));
+    localStorage.setItem(project.id, JSON.stringify(serializeProject(project)));
 }
 
 export class AppController{

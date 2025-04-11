@@ -23,10 +23,10 @@
                 Projects 📥
             </h2>
             <ul class="project-list">
-                <li>
-                    Tuesday Agenda <button id="addProjectList-btn" class="add-btn-inline">add</button>
+                <li data-id="46c8a7a1-c7f5-470f-a26b-a898531b3bdc">
+                    Tuesday Agenda <button id="addProjectList-btn" class="add-btn-inline">+</button>
                     <ul class="styledList">
-                        Placeholder Todo-list
+                        <button>Todo List 1</button>
                     </ul>
                 </li>
                 <li>Exam Preparation</li>
@@ -70,7 +70,7 @@
     
                     <div>
                         <label for="title-input">Title 🔤</label>
-                        <input type="text" name="title-input" id="title-input">
+                        <input type="text" name="title-input" id="title-input" required>
                     </div>
     
                     <div>
@@ -97,7 +97,7 @@
             <p>
                 Some random description about the Todo List
             </p>
-            <ul class="todos">
+            <ul class="todos" data-id="">
                 <li>
                     <button class="add-btn" id="addTodo-btn">Add Task</button>
                 </li>

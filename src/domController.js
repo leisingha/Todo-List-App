@@ -1,6 +1,5 @@
 //domController.js
 
-
 export class DomController{
     constructor(){
 
@@ -37,6 +36,7 @@ export class DomController{
         const todoList = document.createElement('li');
         todoList.textContent = todoListObj.title;
         todoList.dataset.id = todoListObj.id;
+        todoList.dataset.desc = todoListObj.description;
 
         const projectItems = this.#projectList.querySelectorAll('li');
         projectItems.forEach((item) => {
@@ -84,32 +84,6 @@ export class DomController{
             if(item.dataset.id == todoObj.id){
                 this.#todoItems.removeChild(item);
             }
-        })
-    }
-
-    static renderProjectListForm(){
-        const addBtn = document.querySelector('#addProject-btn');
-        const dialog = document.querySelector('#projectListDialog');
-        addBtn.addEventListener('click', ()=>{
-            dialog.showModal();
-        })
-    }
-
-    static renderTodoListForm(){
-        const addBtn = document.querySelector('#addProjectList-btn');
-        const dialog = document.querySelector('#todoListDialog'); 
-        
-        addBtn.addEventListener('click', ()=>{
-            dialog.showModal();
-        })
-        
-    }
-
-    static renderTodoForm(){
-        const addBtn = document.querySelector('#addTodo-btn');
-        const dialog = document.querySelector('#todoDialog');
-        addBtn.addEventListener('click', ()=> {
-            dialog.showModal();
         })
     }
 
