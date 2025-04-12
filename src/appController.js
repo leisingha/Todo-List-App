@@ -39,26 +39,78 @@ export class AppController{
         return todo;
     }
     
-    static addToProject(project, todoList){
+    static addToProject(projectId, todoList) {
+        const serializedProject = localStorage.getItem(projectId);
+        if (!serializedProject) {
+            console.error('Project not found in localStorage.');
+            return;
+        }
+
+        const project = deSerializeProject(JSON.parse(serializedProject));
         project.addToContainer(todoList);
-        populateStorage(project);
+        populateStorage(project); // Update the project in localStorage
     }
 
-    static addToTodolist(todoList, todo){
+    static addToTodolist(todoListId, todo) {
+        const todoList = JSON.parse(localStorage.getItem(todoListId));
+        if (!todoList) {
+            console.error('TodoList not found in localStorage.');
+            return;
+        }
+
         todoList.addToContainer(todo);
+
+        const projectKey = todoList.projectId; // Assuming todoList has a reference to its parent project
+        const serializedProject = localStorage.getItem(projectKey);
+        if (!serializedProject) {
+            console.error('Parent project not found in localStorage.');
+            return;
+        }
+
+        const project = deSerializeProject(JSON.parse(serializedProject));
+        project.todoLists = project.todoLists.map((list) =>
+            list.id === todoList.id ? todoList : list
+        );
+        populateStorage(project); // Update the project in localStorage
     }
 
-    static removeProject(project){
-        localStorage.removeItem(project.id);
+    static removeProject(projectId) {
+        localStorage.removeItem(projectId); // Remove the project from localStorage
     }
 
-    static removeTodoList(project,id){
-        project.removeFromContainer(id);
+    static removeTodoList(projectId, todoListId) {
+        const serializedProject = localStorage.getItem(projectId);
+        if (!serializedProject) {
+            console.error('Project not found in localStorage.');
+            return;
+        }
+
+        const project = deSerializeProject(JSON.parse(serializedProject));
+        project.removeFromContainer(todoListId);
+        populateStorage(project); // Update the project in localStorage
     }
 
-    static removeTodo(todoList, id){
-        todoList.removeFromContainer(id);
-    }
+    static removeTodo(todoListId, todoId) {
+        const todoList = JSON.parse(localStorage.getItem(todoListId));
+        if (!todoList) {
+            console.error('TodoList not found in localStorage.');
+            return;
+        }
 
-}   
+        todoList.removeFromContainer(todoId);
+
+        const projectKey = todoList.projectId; // Assuming todoList has a reference to its parent project
+        const serializedProject = localStorage.getItem(projectKey);
+        if (!serializedProject) {
+            console.error('Parent project not found in localStorage.');
+            return;
+        }
+
+        const project = deSerializeProject(JSON.parse(serializedProject));
+        project.todoLists = project.todoLists.map((list) =>
+            list.id === todoList.id ? todoList : list
+        );
+        populateStorage(project); // Update the project in localStorage
+    }
+}
 

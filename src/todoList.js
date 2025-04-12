@@ -7,16 +7,22 @@ export class TodoList{
     #title;
     #description;
     #container;
+    #projectID
 
-    constructor(title, description){
+    constructor(title, description, projectID){
         this.title = title;
         this.description = description;
+        this.#projectID = projectID;
         this.#container = new Container;
         this.#id = generateId();
     }
 
     get id(){
         return this.#id;
+    }
+
+    get projectID(){
+        return this.#projectID
     }
 
     set description(text){

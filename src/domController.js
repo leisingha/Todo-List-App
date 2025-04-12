@@ -12,11 +12,19 @@ export class DomController{
         const project = document.createElement('li');
         const todoList = document.createElement('ul');
 
+        const addtodoListBtn = document.createElement('button');
+        addtodoListBtn.textContent = '+';
+        addtodoListBtn.id = 'addProjectList-btn';
+        addtodoListBtn.classList.add('add-btn-inline');
+        addtodoListBtn.dataset.id = projectObj.id;
+
         project.textContent = projectObj.title;
         project.dataset.id = projectObj.id;
 
+        project.appendChild(addtodoListBtn);
         project.appendChild(todoList);
         this.#projectList.appendChild(project);
+        return addtodoListBtn;
     }
 
     static removeProject(projectObj){
@@ -32,18 +40,20 @@ export class DomController{
         obj.textContent = title;
     }
 
-    static addTodoList(projectObj, todoListObj){
-        const todoList = document.createElement('li');
+    static addTodoList(projectID, todoListObj){
+        const todoList = document.createElement('button');
         todoList.textContent = todoListObj.title;
         todoList.dataset.id = todoListObj.id;
         todoList.dataset.desc = todoListObj.description;
+        todoList.dataset.projectID = projectID;
 
         const projectItems = this.#projectList.querySelectorAll('li');
         projectItems.forEach((item) => {
-            if(item.dataset.id == projectObj.id){
+            if(item.dataset.id == projectID){
                 item.appendChild(todoList);
             }
         })
+        return todoList;
 
     }
 
