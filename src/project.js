@@ -19,7 +19,6 @@ export function deSerializeProject(project){
     });
     newProject.id = project.id;
     return newProject;
-    
 }
 
 export class Container{

@@ -6,3 +6,5 @@ import './style.css'
 
 
 localStorage.clear();
+localStorage.setItem('curerentProjectID', '');
+localStorage.setItem('currentTodoListID', '');
