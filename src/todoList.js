@@ -46,6 +46,6 @@ export class TodoList{
         this.#container.removeFromContainer(id);
     }
     get container(){
-        return this.#container.items();
+        return this.#container.items;
     }
 }

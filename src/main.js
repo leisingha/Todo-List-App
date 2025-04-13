@@ -21,7 +21,7 @@ addProjectBtn.addEventListener('click', () =>{
 const addTodoBtn = document.querySelector('#addTodo-btn');
 addTodoBtn.addEventListener('click', ()=>{
     todoDialog.showModal();
-
+    getTodoInfo()
 })
 
 function getProjectInfo(){
@@ -73,11 +73,23 @@ function getTodoListInfo(projectID){
 
 function getTodoInfo(){
     const form = document.querySelector('#todo-form');
+    const todoListID = document.querySelector('.content h2').dataset.id;
+    const projectID = document.querySelector('.content h2').dataset.id;
 
     const btnConfirm = document.querySelector('#todo-form #btn-confirm');
     btnConfirm.addEventListener('click', (e)=>{
+        const data = new FormData(form);
+        const title = data.get('text-input');
+        const date = data.get('date-input');
+        const priority = data.get('priority-input');
+        if(title == ''){
+            return;
+        }
+        e.preventDefault()
+        generateTodo(todoListID, title, date, priority)
+        todoDialog.close();
         
-    })
+    }, {once:true})
 
     const btnCancel = document.querySelector('#todo-form #btn-cancel');
 }
@@ -94,18 +106,19 @@ function generateProject(title){
 
 function generateTodoList(projectID, title, desc){
     const todoList = AppController.createNewTodoList(title, desc);
+    AppController.addToProject(projectID, todoList);
     const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
-
-    })
+        DomController.populateMainPage(projectID,todoList);
+    }, {once:true});
 }
 
 
-function generateTodo(title, priority, dueDate){
+function generateTodo(todoListID, title, priority, dueDate){
     const todo = AppController.createNewTodo(title, priority, dueDate);
+    AppController.addToTodolist(todoListID,todo);
     const todoNode = DomController.addTodo(todo);
     todoNode.querySelector('input').addEventListener('click', ()=>{
         todo.toggleComplete();
-    })
-
+    }, {once:true});
 }

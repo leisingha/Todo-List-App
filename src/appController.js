@@ -44,8 +44,8 @@ export class AppController{
         return todoList;
     }
     
-    static addToProject(projectId, todoList) {
-        const project = getCurrentProject(projectId);
+    static addToProject(projectID, todoList) {
+        const project = getCurrentProject(projectID);
         project.addToContainer(todoList);
         populateStorage(project);
     }
@@ -62,9 +62,10 @@ export class AppController{
     }
 
     static addToTodolist(todoListID, todo) {
-        const projectID = localStorage.getItem('currentProjectID');
+        const projectID = document.querySelector('.content h2').dataset.projectID;
         const project = getCurrentProject(projectID)
         const todoLists = project.container;
+        console.log(project)
         todoLists.forEach(todoList => {
             if(todoList.id == todoListID){
                 todoList.addToContainer(todo);
