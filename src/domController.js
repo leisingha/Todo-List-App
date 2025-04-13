@@ -24,7 +24,7 @@ export class DomController{
         project.appendChild(addtodoListBtn);
         project.appendChild(todoList);
         this.#projectList.appendChild(project);
-        return addtodoListBtn;
+        return project;
     }
 
     static removeProject(projectObj){
@@ -53,7 +53,7 @@ export class DomController{
                 item.appendChild(todoList);
             }
         })
-        return ;
+        return todoList;
 
     }
 
@@ -73,29 +73,50 @@ export class DomController{
     }
 
     static addTodo(todoObj){
-        const todo = document.createElement('li');
-        const date = document.createElement('div');
+        const todoNode = document.createElement('li');
+        todoNode.dataset.id = todoObj.id;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        const title = document.createElement('div');
+        title.textContent = todoObj.title;
         const priority = document.createElement('div');
-
-        todo.textContent = todoObj.title;
-        date.textContent = todoObj.date;
         priority.textContent = todoObj.priority;
+        const dueDate = document.createElement('div');
+        dueDate.textContent = todoObj.dueDate;
 
-        todo.appendChild(date);
-        todo.appendChild(priority);
-        this.#todoItems.append(todo);
+        todoNode.appendChild(checkbox);
+        todoNode.appendChild(title);
+        todoNode.appendChild(priority);
+        todoNode.appendChild(dueDate);
 
+        this.#todoItems.appendChild(todoNode);
+
+        return todoNode;
         
     }
 
-    static removeTodo(todoObj){
-        const todoItems = this.#todoItems.querySelectorAll('li')
+    static removeTodo(todoID){
+        const todoItems = this.#todoItems.querySelectorAll('li');
         todoItems.forEach((item) =>{
-            if(item.dataset.id == todoObj.id){
+            if(item.dataset.id == todoID){
                 this.#todoItems.removeChild(item);
             }
         })
     }
 
+    static populateMainPage(todoListObj){
+        const heading = document.querySelector('.content h2');
+        heading.textContent = todoListObj.title;
+        heading.dataset.id = todoListObj.id;
 
+        const description = document.querySelector('.content p');
+        description.textContent = todoListObj.description;
+
+        this.#todoItems.innerHTML = '';
+        
+        todoListObj.container.forEach( todo => {
+            this.addTodo(todo);
+        })
+    }
 }
