@@ -42,21 +42,33 @@ function getProjectInfo(){
     const btnCancel = document.querySelector('#project-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
-        projectDialog.closest();
+        projectDialog.close();
     },{once:true})
 
 }
 
 
-function getTodoListInfo(){
+function getTodoListInfo(projectID){
     const form = document.querySelector('#todoList-form');
 
     const btnConfirm = document.querySelector('#todoList-form #btn-confirm');
     btnConfirm.addEventListener('click', (e)=>{
-        
-    })
+        const data = new FormData(form);
+        const title = data.get('title-input');
+        const desc = data.get('desc-input');
+        if(title == ''){
+            return;
+        }
+        e.preventDefault()
+        generateTodoList(projectID, title, desc)
+        todoListDialog.close();
+    }, {once:true})
 
-    const btnCancel = document.querySelector('#todoLisrt-form #btn-cancel');
+    const btnCancel = document.querySelector('#todoList-form #btn-cancel');
+    btnCancel.addEventListener('click', (e)=>{
+        e.preventDefault();
+        todoDialog.close();
+    },{once:true})
 }
 
 function getTodoInfo(){
@@ -76,16 +88,18 @@ function generateProject(title){
     const addProjectBtn = projectNode.querySelector('button');
     addProjectBtn.addEventListener('click', (e)=>{
         todoListDialog.showModal();
+        getTodoListInfo(project.id);
     })
 }
 
-function generateTodoList(title, desc){
+function generateTodoList(projectID, title, desc){
     const todoList = AppController.createNewTodoList(title, desc);
-    const todoListNode = DomController.addTodoList(todoList);
+    const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
 
     })
 }
+
 
 function generateTodo(title, priority, dueDate){
     const todo = AppController.createNewTodo(title, priority, dueDate);
