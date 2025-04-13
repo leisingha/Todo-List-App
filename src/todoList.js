@@ -20,6 +20,9 @@ export class TodoList{
     get id(){
         return this.#id;
     }
+    set id(val){
+        this.#id = val;
+    }
 
     get projectID(){
         return this.#projectID
