@@ -69,7 +69,6 @@ function editProjectInfo(projectID, node){
         e.preventDefault();
         editProjectDialog.close();
     },{once:true})
-
 }
 
 

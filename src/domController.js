@@ -107,6 +107,8 @@ export class DomController{
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.checked = "";
+
         const title = document.createElement('div');
         title.textContent = todoObj.title;
         const priority = document.createElement('div');

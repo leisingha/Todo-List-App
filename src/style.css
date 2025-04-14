@@ -259,4 +259,57 @@ background-color: #444;
 .dropdown:hover .dropdown-menu {
 display: block;
 }
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+/* Styling the checkbox */
+input[type="checkbox"] {
+position: relative;
+width: 30px;
+height: 30px;
+appearance: none; /* Remove default checkbox styles */
+border: 2px solid #323232; /* Main color for border */
+border-radius: 5px;
+box-shadow: 4px 4px var(--tertiary-colour); /* Shadow color */
+background-color: #ccc; /* Out-of-focus background color */
+cursor: pointer;
+transition: all 0.3s;
+}
+
+/* Change background color when checked */
+input[type="checkbox"]:checked {
+background-color: #2d8cf0; /* Focus background color */
+}
+/* Add checkmark using ::after pseudo-element */
+input[type="checkbox"]::after {
+content: "";
+width: 10px; /* Width of the checkmark */
+height: 5px; /* Height of the checkmark */
+position: absolute;
+top: 9px; /* Adjust vertical position */
+left: 7px; /* Adjust horizontal position */
+border: solid #fff; /* Checkmark color */
+border-width: 0 2px 2px 0; /* Thickness of the checkmark */
+transform: rotate(135deg) scaleY(-1) translateY(-1px) translateX(-1px); /* Rotate, flip vertically, and adjust position */
+display: none;
+}
+
+
+
+/* Show checkmark when checked */
+input[type="checkbox"]:checked::after {
+display: block;
+}
+
+.todos li{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+  
   
