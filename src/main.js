@@ -35,13 +35,15 @@ function getProjectInfo(){
         }
         e.preventDefault()
         generateProject(title);
-        projectDialog.close();    
+        projectDialog.close();   
+        form.reset(); 
     },{once:true})
 
     const btnCancel = document.querySelector('#project-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
         projectDialog.close();
+        form.reset(); 
     },{once:true})
 
 }
@@ -59,13 +61,15 @@ function editProjectInfo(projectID, node){
         e.preventDefault()
         AppController.renameProject(projectID, title);
         DomController.renameObject(node, title);
-        editProjectDialog.close();    
+        editProjectDialog.close(); 
+        form.reset();    
     },{once:true})
 
     const btnCancel = document.querySelector('#renameProject-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
         editProjectDialog.close();
+        form.reset(); 
     },{once:true})
 }
 
@@ -84,12 +88,14 @@ function getTodoListInfo(projectID){
         e.preventDefault()
         generateTodoList(projectID, title, desc)
         todoListDialog.close();
+        form.reset(); 
     }, {once:true})
 
     const btnCancel = document.querySelector('#todoList-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
         todoListDialog.close();
+        form.reset(); 
     },{once:true})
 }
 
@@ -109,6 +115,7 @@ function getTodoInfo(){
         e.preventDefault()
         generateTodo(todoListID, title, date, priority);
         todoDialog.close();
+        form.reset(); 
         
     }, {once:true})
 
@@ -116,6 +123,7 @@ function getTodoInfo(){
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
         todoDialog.close();
+        form.reset(); 
     },{once:true})
 }
 
@@ -162,5 +170,5 @@ function generateTodo(todoListID, title, priority, dueDate){
     todoNode.querySelector('input').addEventListener('click', ()=>{
         todo.toggleComplete();
         AppController.updateTodo(todoListID,todo);
-    },);
+    });
 }
