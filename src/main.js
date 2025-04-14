@@ -1,13 +1,11 @@
 //main.js
 
 import { DomController } from "./domController.js"
-import { AppController } from "./appController.js";
+import { AppController, getCurrentProject } from "./appController.js";
 import './style.css'
 
 
 localStorage.clear();
-localStorage.setItem('currentProjectID', '');
-localStorage.setItem('currentTodoListID', '');
 
 const projectDialog = document.querySelector('#projectListDialog');
 const todoListDialog = document.querySelector('#todoListDialog')
@@ -97,8 +95,7 @@ function getTodoListInfo(projectID){
 
 function getTodoInfo(){
     const form = document.querySelector('#todo-form');
-    const todoListID = document.querySelector('.content h2').dataset.id;
-    const projectID = document.querySelector('.content h2').dataset.id;
+    const todoListID = document.querySelector('.content h2').dataset.todoListID;
 
     const btnConfirm = document.querySelector('#todo-form #btn-confirm');
     btnConfirm.addEventListener('click', (e)=>{
@@ -110,7 +107,7 @@ function getTodoInfo(){
             return;
         }
         e.preventDefault()
-        generateTodo(todoListID, title, date, priority)
+        generateTodo(todoListID, title, date, priority);
         todoDialog.close();
         
     }, {once:true})
@@ -150,15 +147,17 @@ function generateTodoList(projectID, title, desc){
     AppController.addToProject(projectID, todoList);
     const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
-        DomController.populateMainPage(projectID,todoList);
-        console.log('...is executing!')
-    },);
+        const updatedTodoList = getCurrentProject(projectID).container.find(item => item.id == todoList.id);
+        DomController.populateMainPage(projectID,updatedTodoList);
+    });
+    console.log('Todo list created');
 }
 
 
 function generateTodo(todoListID, title, priority, dueDate){
     const todo = AppController.createNewTodo(title, priority, dueDate);
     AppController.addToTodolist(todoListID,todo);
+
     const todoNode = DomController.addTodo(todo);
     todoNode.querySelector('input').addEventListener('click', ()=>{
         todo.toggleComplete();

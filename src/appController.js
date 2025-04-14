@@ -10,7 +10,7 @@ function populateStorage(project){
   
 }
 
-function getCurrentProject(projectID){
+export function getCurrentProject(projectID){
     const serializedProject = localStorage.getItem(projectID);
         if (!serializedProject) {
             console.error('Project not found in localStorage.');
@@ -73,15 +73,15 @@ export class AppController{
 
     static addToTodolist(todoListID, todo) {
         const projectID = document.querySelector('.content h2').dataset.projectID;
-        const project = getCurrentProject(projectID)
+        const project = getCurrentProject(projectID);
         const todoLists = project.container;
-        console.log(project)
         todoLists.forEach(todoList => {
             if(todoList.id == todoListID){
                 todoList.addToContainer(todo);
             }
-        })
+        })    
         populateStorage(project);
+        console.log(project);
     }
 
     static removeTodo(todoListId, todoId) {

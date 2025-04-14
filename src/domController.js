@@ -72,7 +72,7 @@ export class DomController{
     static addTodoList(projectID, todoListObj){
         const todoList = document.createElement('button');
         todoList.textContent = todoListObj.title;
-        todoList.dataset.id = todoListObj.id;
+        todoList.dataset.todoListid = todoListObj.id;
         todoList.dataset.desc = todoListObj.description;
         todoList.dataset.projectID = projectID;
 
@@ -148,7 +148,7 @@ export class DomController{
         this.#todoItems.innerHTML = '';
         
         todoListObj.container.forEach( todo => {
-            this.addTodo(todo);
+            this.#todoItems.appendChild(this.addTodo(todo));
         })
     }
 }
