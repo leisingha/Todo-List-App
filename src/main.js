@@ -67,7 +67,7 @@ function getTodoListInfo(projectID){
     const btnCancel = document.querySelector('#todoList-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
-        todoDialog.close();
+        todoListDialog.close();
     },{once:true})
 }
 
@@ -92,6 +92,10 @@ function getTodoInfo(){
     }, {once:true})
 
     const btnCancel = document.querySelector('#todo-form #btn-cancel');
+    btnCancel.addEventListener('click', (e)=>{
+        e.preventDefault();
+        todoDialog.close();
+    },{once:true})
 }
 
 function generateProject(title){
@@ -110,7 +114,8 @@ function generateTodoList(projectID, title, desc){
     const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
         DomController.populateMainPage(projectID,todoList);
-    }, {once:true});
+        console.log('...is executing!')
+    },);
 }
 
 
