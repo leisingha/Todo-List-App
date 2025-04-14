@@ -161,5 +161,6 @@ function generateTodo(todoListID, title, priority, dueDate){
     const todoNode = DomController.addTodo(todo);
     todoNode.querySelector('input').addEventListener('click', ()=>{
         todo.toggleComplete();
-    }, {once:true});
+        AppController.updateTodo(todoListID,todo);
+    },);
 }

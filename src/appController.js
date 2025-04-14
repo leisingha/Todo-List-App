@@ -81,7 +81,6 @@ export class AppController{
             }
         })    
         populateStorage(project);
-        console.log(project);
     }
 
     static removeTodo(todoListId, todoId) {
@@ -95,6 +94,15 @@ export class AppController{
         })
         populateStorage(project);
 
+    }
+
+    static updateTodo(todoListID,todoObj){
+        const projectID = document.querySelector('.content h2').dataset.projectID;
+        const project = getCurrentProject(projectID);
+        project.container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoObj.id).toggleComplete();
+        populateStorage(project);
+        console.log(getCurrentProject(project.id).container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoObj.id).isComplete());
+        
     }
 }
 

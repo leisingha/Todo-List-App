@@ -107,7 +107,7 @@ export class DomController{
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.checked = "";
+        checkbox.checked = todoObj.isComplete();
 
         const title = document.createElement('div');
         title.textContent = todoObj.title;
