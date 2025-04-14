@@ -12,6 +12,7 @@ localStorage.setItem('currentTodoListID', '');
 const projectDialog = document.querySelector('#projectListDialog');
 const todoListDialog = document.querySelector('#todoListDialog')
 const todoDialog = document.querySelector('#todoDialog');
+const editProjectDialog = document.querySelector('#editProjectListDialog');
 
 const addProjectBtn = document.querySelector('#addProject-btn');
 addProjectBtn.addEventListener('click', () =>{
@@ -43,6 +44,30 @@ function getProjectInfo(){
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
         projectDialog.close();
+    },{once:true})
+
+}
+
+function editProjectInfo(projectID, node){
+    const form = document.querySelector('#renameProject-form');
+
+    const btnConfirm = document.querySelector('#renameProject-form #btn-confirm');
+    btnConfirm.addEventListener('click', (e) =>{
+        const data = new FormData(form);
+        const title = data.get('title-input');
+        if(title == ''){
+            return;
+        }
+        e.preventDefault()
+        AppController.renameProject(projectID, title);
+        DomController.renameObject(node, title);
+        editProjectDialog.close();    
+    },{once:true})
+
+    const btnCancel = document.querySelector('#renameProject-form #btn-cancel');
+    btnCancel.addEventListener('click', (e)=>{
+        e.preventDefault();
+        editProjectDialog.close();
     },{once:true})
 
 }
@@ -102,9 +127,22 @@ function generateProject(title){
     const project = AppController.createNewProject(title);
     const projectNode = DomController.addProject(project);
     const addProjectBtn = projectNode.querySelector('button');
+    const renameBtn = projectNode.querySelector('#renameBtn');
+    const removeBtn = projectNode.querySelector('#removeBtn');
+
     addProjectBtn.addEventListener('click', (e)=>{
         todoListDialog.showModal();
         getTodoListInfo(project.id);
+    })
+
+    renameBtn.addEventListener('click', (e)=>{
+        editProjectDialog.showModal();
+        editProjectInfo(project.id, projectNode);
+    })
+
+    removeBtn.addEventListener('click', (e)=>{
+        AppController.removeProject(project.id);
+        DomController.removeProject(project);
     })
 }
 

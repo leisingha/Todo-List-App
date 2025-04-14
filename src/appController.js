@@ -32,6 +32,16 @@ export class AppController{
         localStorage.removeItem(projectId); 
     }
 
+    static renameProject(projectID, newName) {
+        const project = getCurrentProject(projectID); // Retrieve the project
+        if (!project) {
+            console.error('Project not found. Cannot rename.');
+            return;
+        }
+        project.title = newName; // Update the project's name
+        populateStorage(project); // Save the updated project back to localStorage
+    }
+
     static printAllProjects(){
         for (let index = 0; index < localStorage.length; index++){
             let key = localStorage.key(index);

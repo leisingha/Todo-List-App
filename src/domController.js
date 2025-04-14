@@ -18,11 +18,37 @@ export class DomController{
         addtodoListBtn.classList.add('add-btn-inline');
         addtodoListBtn.dataset.id = projectObj.id;
 
+        const container = document.createElement('div');
+        container.classList.add('dropdown');
+
+        const dropDownBtn = document.createElement('button');
+        dropDownBtn.classList.add('dropdown-button');
+        dropDownBtn.textContent = '⋮';
+
+        const dropDownOptions = document.createElement('div');
+        dropDownOptions.classList.add('dropdown-menu');
+
+        const renameBtn = document.createElement('button');
+        renameBtn.id = 'renameBtn';
+        renameBtn.textContent = 'Edit';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.id = 'removeBtn';
+        removeBtn.textContent = 'Delete';
+
         project.textContent = projectObj.title;
         project.dataset.id = projectObj.id;
 
+        dropDownOptions.appendChild(renameBtn);
+        dropDownOptions.appendChild(removeBtn);
+
+        container.appendChild(dropDownBtn);
+        container.appendChild(dropDownOptions);
+
         project.appendChild(addtodoListBtn);
+        project.appendChild(container);
         project.appendChild(todoList);
+        
         this.#projectList.appendChild(project);
         return project;
     }
@@ -36,8 +62,11 @@ export class DomController{
         })
     }
 
-    static renameObject(obj, title){
-        obj.textContent = title;
+    static renameObject(node, newName){
+        const textNode = Array.from(node.childNodes).find(child => child.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+            textNode.nodeValue = newName; // Update only the text content
+        }
     }
 
     static addTodoList(projectID, todoListObj){

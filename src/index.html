@@ -25,6 +25,15 @@
             <ul class="project-list">
                 <li data-id="">
                     Default <button id="addProjectList-btn" class="add-btn-inline">+</button>
+                    <div class="dropdown">
+                        <!-- Three dots button -->
+                        <button class="dropdown-button">⋮</button>
+                        <!-- Dropdown menu -->
+                        <div class="dropdown-menu">
+                          <button id="renameBtn">Edit</button>
+                          <button id="removeBtn">Delete<button>
+                        </div>
+                      </div>
                     <ul class="styledList">
                         <button>Todo List</button>
                     </ul>
@@ -37,6 +46,30 @@
                 <form action="" id="project-form">
                     <h2>
                         Add Project 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+
+                    
+                </form>
+            </dialog>
+
+            <dialog id="editProjectListDialog">
+                <form action="" id="renameProject-form">
+                    <h2>
+                        Edit Project 📝
                     </h2>
     
                     <div>
