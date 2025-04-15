@@ -234,4 +234,8 @@ function generateTodo(todoListID, title, priority, dueDate){
         todo.toggleComplete();
         AppController.updateTodo(todoListID,todo);
     });
+    todoNode.querySelector('button').addEventListener('click',()=>{
+        AppController.removeTodo(todoListID, todo.id);
+        DomController.removeTodo(todo.id);
+    })  
 }

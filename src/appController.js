@@ -92,7 +92,7 @@ export class AppController{
     }
 
     static removeTodo(todoListId, todoId) {
-        const projectID = localStorage.getItem('currentProjectID');
+        const projectID = document.querySelector('.banner h2').dataset.projectID;
         const project = getCurrentProject(projectID)
         const todoLists = project.container;
         todoLists.forEach(todoList => {

@@ -110,11 +110,15 @@ export class DomController{
         priority.textContent = todoObj.priority;
         const dueDate = document.createElement('div');
         dueDate.textContent = todoObj.dueDate;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '🗑️';
 
         todoNode.appendChild(checkbox);
         todoNode.appendChild(title);
         todoNode.appendChild(priority);
         todoNode.appendChild(dueDate);
+        todoNode.appendChild(deleteBtn);
 
         this.#todoItems.appendChild(todoNode);
 
