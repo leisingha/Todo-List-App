@@ -79,7 +79,8 @@ export class DomController{
         const projectItems = this.#projectList.querySelectorAll('li');
         projectItems.forEach((item) => {
             if(item.dataset.id == projectID){
-                item.appendChild(todoList);
+                item.querySelector('ul').appendChild(todoList);
+                item.querySelector('ul').classList.add('styledList')
             }
         })
         return todoList;

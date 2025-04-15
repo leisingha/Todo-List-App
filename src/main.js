@@ -7,6 +7,12 @@ import './style.css'
 
 localStorage.clear();
 
+generateProject('Default');
+generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Default Todo List', 'Description unavailable.')
+const button = document.querySelector('.styledList button')
+button.dispatchEvent(new Event("click"));
+
+
 const projectDialog = document.querySelector('#projectListDialog');
 const todoListDialog = document.querySelector('#todoListDialog')
 const todoDialog = document.querySelector('#todoDialog');
@@ -158,7 +164,6 @@ function generateTodoList(projectID, title, desc){
         const updatedTodoList = getCurrentProject(projectID).container.find(item => item.id == todoList.id);
         DomController.populateMainPage(projectID,updatedTodoList);
     });
-    console.log('Todo list created');
 }
 
 
