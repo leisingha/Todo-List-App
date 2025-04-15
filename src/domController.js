@@ -138,7 +138,7 @@ export class DomController{
     }
 
     static populateMainPage(projectID ,todoListObj){
-        const heading = document.querySelector('.content h2');
+        const heading = document.querySelector('.banner h2');
         heading.textContent = todoListObj.title;
         heading.dataset.todoListID = todoListObj.id;
         heading.dataset.projectID = projectID;

@@ -102,6 +102,34 @@
                     </div>
                 </form>
             </dialog>
+
+            <dialog id="updateTodoListDialog">
+                <form action="" id="updateTodoList-form">
+                    <h2>
+                        Edit To-do List 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+    
+                    <div>
+                        <label for="desc-input">Description 📑</label>
+                        <input type="text" name="desc-input" id="desc-input">
+                    </div>
+    
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
             <input type="search" placeholder="Search">
         </div>
         <div class="content">
@@ -109,8 +137,8 @@
                 <h2>
                 
                 </h2>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button id="editBtn">Edit</button>
+                <button id='deleteBtn'>Delete</button>
             </div>
             <p>
                 

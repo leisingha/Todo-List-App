@@ -66,6 +66,14 @@ export class AppController{
         populateStorage(project); // Update the project in localStorage
     }
 
+    static updateTodoList(projectId, todoListID, title, desc){
+        const project = getCurrentProject(projectId)
+        project.container.find(todoList => todoList.id == todoListID).title = title;
+        project.container.find(todoList => todoList.id == todoListID).desc = desc;
+        populateStorage(project);
+        console.log(project);
+    }
+
     static createNewTodo(title, notes, dueDate, priority){
         const todo = new Todo(title, notes, dueDate, priority);
         return todo;

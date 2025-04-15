@@ -18,12 +18,11 @@ function initializeDefaultPage(){
 
 initializeDefaultPage();
 
-
-
 const projectDialog = document.querySelector('#projectListDialog');
 const todoListDialog = document.querySelector('#todoListDialog')
 const todoDialog = document.querySelector('#todoDialog');
 const editProjectDialog = document.querySelector('#editProjectListDialog');
+const editTodoListDialog = document.querySelector('#updateTodoListDialog');
 
 const addProjectBtn = document.querySelector('#addProject-btn');
 addProjectBtn.addEventListener('click', () =>{
@@ -35,6 +34,18 @@ addTodoBtn.addEventListener('click', ()=>{
     todoDialog.showModal();
     getTodoInfo()
 })
+
+const editBtn = document.querySelector('.banner #editBtn');
+editBtn.addEventListener('click', (e)=>{
+    const projectID = e.target.previousElementSibling.dataset.projectID
+    const todoListID = e.target.previousElementSibling.dataset.todoListID;
+    editTodoListDialog.showModal();
+    getUpdatedTodoInfo(projectID, todoListID);
+})
+
+const deleteBtn = document.querySelector('.banner #deleteBtn')
+
+
 
 function getProjectInfo(){
     const form = document.querySelector('#project-form');
@@ -171,6 +182,32 @@ function generateTodoList(projectID, title, desc){
         const updatedTodoList = getCurrentProject(projectID).container.find(item => item.id == todoList.id);
         DomController.populateMainPage(projectID,updatedTodoList);
     });
+}
+
+function getUpdatedTodoInfo(projectID, todoListID){
+    const form = document.querySelector('#updateTodoList-form');
+
+    const btnConfirm = document.querySelector('#updateTodoList-form #btn-confirm');
+    btnConfirm.addEventListener('click', (e) =>{
+        const data = new FormData(form);
+        const title = data.get('title-input');
+        const desc = data.get('desc-input');
+        if(title == ''){
+            return;
+        }
+        e.preventDefault()
+        AppController.updateTodoList(projectID,todoListID,title, desc);
+        // DomController.renameObject(node, title);
+        editProjectDialog.close(); 
+        form.reset();    
+    },{once:true})
+
+    const btnCancel = document.querySelector('#updateTodoList-form #btn-cancel');
+    btnCancel.addEventListener('click', (e)=>{
+        e.preventDefault();
+        editProjectDialog.close();
+        form.reset(); 
+    },{once:true})
 }
 
 
