@@ -307,6 +307,11 @@ display: block;
     margin-bottom: 1rem;
 }
 
+.content .banner{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 
 
 
