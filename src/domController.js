@@ -131,11 +131,17 @@ export class DomController{
         })
     }
 
-    static populateMainPage(projectID ,todoListObj){
+    static populateMainPage(projectID ,todoListObj, initialize = false){
         const heading = document.querySelector('.banner h2');
         heading.textContent = todoListObj.title;
         heading.dataset.todoListID = todoListObj.id;
         heading.dataset.projectID = projectID;
+        const deleteBtn = document.querySelector('.banner #deleteBtn');
+        deleteBtn.disabled = false;
+
+        if (initialize){
+            deleteBtn.disabled = true;
+        }
 
         const description = document.querySelector('.content p');
         description.textContent = todoListObj.description;

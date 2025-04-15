@@ -8,7 +8,7 @@ import './style.css'
 localStorage.clear();
 
 generateProject('Default');
-generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Add your Title here! 😺', 'Add your description here! 😼')
+generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Add your Title here! 😺', 'Add your description here! 😼', true)
 
 
 function initializeDefaultPage(){
@@ -182,13 +182,13 @@ function generateProject(title){
     })
 }
 
-function generateTodoList(projectID, title, desc){
+function generateTodoList(projectID, title, desc, initialize=false){
     const todoList = AppController.createNewTodoList(title, desc);
     AppController.addToProject(projectID, todoList);
     const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
         const updatedTodoList = getCurrentProject(projectID).container.find(item => item.id == todoList.id);
-        DomController.populateMainPage(projectID,updatedTodoList);
+        DomController.populateMainPage(projectID,updatedTodoList, initialize);
     });
 }
 
