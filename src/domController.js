@@ -92,7 +92,7 @@ export class DomController{
 
         projectItems.forEach((item) =>{
             if(item.dataset.id == projectObj.id){
-                const todoLists = item.querySelectorAll('li');
+                const todoLists = item.querySelectorAll('ul button');
                 todoLists.forEach(todoList => {
                     if(todoList.dataset.id == todoListObj.id){
                         item.removeChild(todoList);
