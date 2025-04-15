@@ -72,7 +72,7 @@ export class DomController{
     static addTodoList(projectID, todoListObj){
         const todoList = document.createElement('button');
         todoList.textContent = todoListObj.title;
-        todoList.dataset.todoListid = todoListObj.id;
+        todoList.dataset.todoListID = todoListObj.id;
         todoList.dataset.desc = todoListObj.description;
         todoList.dataset.projectID = projectID;
 
@@ -85,6 +85,10 @@ export class DomController{
         })
         return todoList;
 
+    }
+
+    static renameTodoList(node, text){
+        node.textContent = text;
     }
 
     static removeTodolist(projectObj, todoListObj){

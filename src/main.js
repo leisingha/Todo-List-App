@@ -187,6 +187,10 @@ function generateTodoList(projectID, title, desc){
 function getUpdatedTodoInfo(projectID, todoListID){
     const form = document.querySelector('#updateTodoList-form');
 
+    const todoListButton = Array.from(document.querySelectorAll('.styledList button')).find(button => button.dataset.todoListID === todoListID);
+    const todoListHeader = document.querySelector('.banner h2');
+    const todoListDesc = document.querySelector('.content p');
+
     const btnConfirm = document.querySelector('#updateTodoList-form #btn-confirm');
     btnConfirm.addEventListener('click', (e) =>{
         const data = new FormData(form);
@@ -197,8 +201,10 @@ function getUpdatedTodoInfo(projectID, todoListID){
         }
         e.preventDefault()
         AppController.updateTodoList(projectID,todoListID,title, desc);
-        // DomController.renameObject(node, title);
-        editProjectDialog.close(); 
+        DomController.renameTodoList(todoListButton, title);
+        DomController.renameTodoList(todoListHeader, title);
+        DomController.renameTodoList(todoListDesc, desc);
+        editTodoListDialog.close(); 
         form.reset();    
     },{once:true})
 
