@@ -91,19 +91,9 @@ export class DomController{
         node.textContent = text;
     }
 
-    static removeTodolist(projectObj, todoListObj){
-        const projectItems = this.#projectList.querySelectorAll('li');
-
-        projectItems.forEach((item) =>{
-            if(item.dataset.id == projectObj.id){
-                const todoLists = item.querySelectorAll('ul button');
-                todoLists.forEach(todoList => {
-                    if(todoList.dataset.id == todoListObj.id){
-                        item.removeChild(todoList);
-                    }
-                }) 
-            }
-        })
+    static removeTodolist(todoListID){
+        const todoListButton = Array.from(document.querySelectorAll('.styledList button')).find(button => button.dataset.todoListID === todoListID);
+        todoListButton.remove()
     }
 
     static addTodo(todoObj){

@@ -44,6 +44,14 @@ editBtn.addEventListener('click', (e)=>{
 })
 
 const deleteBtn = document.querySelector('.banner #deleteBtn')
+deleteBtn.addEventListener('click', (e)=>{
+    const projectID = e.target.previousElementSibling.previousElementSibling.dataset.projectID
+    const todoListID = e.target.previousElementSibling.previousElementSibling.dataset.todoListID;
+    
+    AppController.removeTodoList(projectID, todoListID);
+    DomController.removeTodolist(todoListID);
+    initializeDefaultPage();
+})
 
 
 
@@ -211,7 +219,7 @@ function getUpdatedTodoInfo(projectID, todoListID){
     const btnCancel = document.querySelector('#updateTodoList-form #btn-cancel');
     btnCancel.addEventListener('click', (e)=>{
         e.preventDefault();
-        editProjectDialog.close();
+        editTodoListDialog.close();
         form.reset(); 
     },{once:true})
 }
