@@ -8,9 +8,16 @@ import './style.css'
 localStorage.clear();
 
 generateProject('Default');
-generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Default Todo List', 'Description unavailable.')
-const button = document.querySelector('.styledList button')
-button.dispatchEvent(new Event("click"));
+generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Add your Title here! 😺', 'Add your description here! 😼')
+
+
+function initializeDefaultPage(){
+    const button = document.querySelector('.styledList button')
+    button.dispatchEvent(new Event("click"));
+}
+
+initializeDefaultPage();
+
 
 
 const projectDialog = document.querySelector('#projectListDialog');
