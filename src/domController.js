@@ -108,10 +108,29 @@ export class DomController{
 
         const title = document.createElement('div');
         title.textContent = todoObj.title;
+        
         const priority = document.createElement('div');
         priority.textContent = todoObj.priority;
+        priority.classList.add('priorityDiv');
+
+        switch (todoObj.priority){
+            case 'Low':
+                priority.style.backgroundColor = '#434343';
+                break;
+            case 'Medium':
+                console.log('It runs!');
+                priority.style.backgroundColor = '#012213';
+                break;
+            case 'High':
+                priority.style.backgroundColor = '#341601'
+                break;
+            default:
+                break;
+        }
+
         const dueDate = document.createElement('div');
         dueDate.textContent = todoObj.dueDate;
+        dueDate.classList.add('dueDateDiv');
         
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '🗑️';
