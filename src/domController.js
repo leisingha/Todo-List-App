@@ -10,10 +10,18 @@ export class DomController{
 
     static addProject(projectObj){
         const project = document.createElement('li');
+        
         const todoList = document.createElement('ul');
+        
+        const flexContainer = document.createElement('div');
+        flexContainer.classList.add('flexContainer');
+        
+        const titleContainer = document.createElement('div');
+        titleContainer.textContent = projectObj.title;
+        titleContainer.classList.add('titleContainer')
 
         const addtodoListBtn = document.createElement('button');
-        addtodoListBtn.textContent = '+';
+        addtodoListBtn.textContent = '➕';
         addtodoListBtn.id = 'addProjectList-btn';
         addtodoListBtn.classList.add('add-btn-inline');
         addtodoListBtn.dataset.id = projectObj.id;
@@ -21,32 +29,24 @@ export class DomController{
         const container = document.createElement('div');
         container.classList.add('dropdown');
 
-        const dropDownBtn = document.createElement('button');
-        dropDownBtn.classList.add('dropdown-button');
-        dropDownBtn.textContent = '⋮';
-
-        const dropDownOptions = document.createElement('div');
-        dropDownOptions.classList.add('dropdown-menu');
-
         const renameBtn = document.createElement('button');
         renameBtn.id = 'renameBtn';
-        renameBtn.textContent = 'Edit';
+        renameBtn.textContent = '🖊️';
+        renameBtn.classList.add('add-btn-inline')
 
         const removeBtn = document.createElement('button');
+        removeBtn.textContent = '🗑️'
         removeBtn.id = 'removeBtn';
-        removeBtn.textContent = 'Delete';
+        removeBtn.classList.add('add-btn-inline')
 
-        project.textContent = projectObj.title;
         project.dataset.id = projectObj.id;
 
-        dropDownOptions.appendChild(renameBtn);
-        dropDownOptions.appendChild(removeBtn);
+        flexContainer.appendChild(titleContainer);
+        flexContainer.appendChild(addtodoListBtn);
+        flexContainer.appendChild(renameBtn);
+        flexContainer.appendChild(removeBtn);
 
-        container.appendChild(dropDownBtn);
-        container.appendChild(dropDownOptions);
-
-        project.appendChild(addtodoListBtn);
-        project.appendChild(container);
+        project.append(flexContainer);
         project.appendChild(todoList);
         
         this.#projectList.appendChild(project);
@@ -71,6 +71,7 @@ export class DomController{
 
     static addTodoList(projectID, todoListObj){
         const todoList = document.createElement('button');
+        const listItemContainer = document.createElement('li');
         todoList.textContent = todoListObj.title;
         todoList.dataset.todoListID = todoListObj.id;
         todoList.dataset.desc = todoListObj.description;
@@ -79,7 +80,8 @@ export class DomController{
         const projectItems = this.#projectList.querySelectorAll('li');
         projectItems.forEach((item) => {
             if(item.dataset.id == projectID){
-                item.querySelector('ul').appendChild(todoList);
+                listItemContainer.appendChild(todoList);
+                item.querySelector('ul').appendChild(listItemContainer);
                 item.querySelector('ul').classList.add('styledList')
             }
         })
@@ -113,6 +115,7 @@ export class DomController{
         
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '🗑️';
+        deleteBtn.classList.add('add-btn-inline');
 
         todoNode.appendChild(checkbox);
         todoNode.appendChild(title);

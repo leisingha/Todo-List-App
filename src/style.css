@@ -78,6 +78,33 @@ main{
     color: var(--text-colour);
 }
 
+.add-btn-inline{
+    color: var(--header-colour);
+    background-color: var(--secondary-colour);
+    height: 20px;
+    width: 20px;
+    border: 1px solid #393939;
+    box-shadow: 3px 3px #393939;
+    border-radius: 5px;
+}
+
+.titleContainer{
+    margin-right: auto;
+}
+
+.flexContainer{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--tertiary-colour);
+}
+
+.dropdown-button{
+    height: 5px;
+}
+
 .add-btn{
     color: #fafafa;
     padding: 10px 20px;
@@ -293,12 +320,40 @@ transform: rotate(135deg) scaleY(-1) translateY(-1px) translateX(-1px); /* Rotat
 display: none;
 }
 
-
-
 /* Show checkmark when checked */
 input[type="checkbox"]:checked::after {
 display: block;
 }
+
+ul.styledList button{
+    color: var(--header-colour);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #393939;
+    background: var(--primary-colour);
+    box-shadow: 0px 3px #393939;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+ul.styledList button:active{
+    box-shadow: none;
+    transform: translate(0px, 3px);
+}
+
+ul.styledList li{
+    /* margin-left: 1rem; */
+    margin-top: 0.5rem;
+}
+
+.todos{
+    margin-top: 3rem;
+}
+
+#addTodo-btn{
+    margin-top: 0.5rem;
+}
+
 
 .todos li{
     display: flex;
@@ -313,6 +368,26 @@ display: block;
     align-items: center;
 }
 
+.banner{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.content p{
+    border-bottom: 1px solid var(--tertiary-colour);
+    padding-bottom: 0.25rem;
+}
+
+.banner button{
+    color: var(--header-colour);
+    background-color: var(--secondary-colour);
+    height: 30px;
+    width: 30px;
+    border: 1px solid #393939;
+    box-shadow: 3px 3px #393939;
+    border-radius: 5px;
+}
 
 
 
