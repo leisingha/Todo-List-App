@@ -7,7 +7,7 @@ import './style.css'
 
 localStorage.clear();
 
-generateProject('Default');
+generateProject('Default', true);
 generateTodoList(getCurrentProject(localStorage.key(0)).id, 'Add your Title here! 😺', 'Add your description here! 😼', true)
 
 
@@ -159,9 +159,9 @@ function getTodoInfo(){
     },{once:true})
 }
 
-function generateProject(title){
+function generateProject(title, initialize=false){
     const project = AppController.createNewProject(title);
-    const projectNode = DomController.addProject(project);
+    const projectNode = DomController.addProject(project, initialize);
     const addProjectBtn = projectNode.querySelector('button');
     const renameBtn = projectNode.querySelector('#renameBtn');
     const removeBtn = projectNode.querySelector('#removeBtn');

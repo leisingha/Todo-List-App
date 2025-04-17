@@ -8,7 +8,7 @@ export class DomController{
     static #todoItems = document.querySelector('.todos');
     
 
-    static addProject(projectObj){
+    static addProject(projectObj, initialize=false){
         const project = document.createElement('li');
         
         const todoList = document.createElement('ul');
@@ -38,6 +38,11 @@ export class DomController{
         removeBtn.textContent = '🗑️'
         removeBtn.id = 'removeBtn';
         removeBtn.classList.add('add-btn-inline')
+
+        if(initialize){
+            renameBtn.disabled = true;
+            removeBtn.disabled = true;
+        }
 
         project.dataset.id = projectObj.id;
 
