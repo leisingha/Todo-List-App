@@ -84,8 +84,12 @@ main{
     height: 20px;
     width: 20px;
     border: 1px solid #393939;
-    box-shadow: 3px 3px #393939;
+    box-shadow: 2px 2px #393939;
     border-radius: 5px;
+}
+.add-btn-inline:active{
+    transform: translate(2px, 2px);
+    box-shadow: none;
 }
 
 .titleContainer{
@@ -292,7 +296,6 @@ ul.styledList button:active{
 }
 
 ul.styledList li{
-    /* margin-left: 1rem; */
     margin-top: 0.5rem;
 }
 
@@ -302,6 +305,11 @@ ul.styledList li{
 
 #addTodo-btn{
     margin-top: 0.5rem;
+}
+
+#editBtn:active, #deleteBtn:active{
+    transform: translate(3px, 3px);
+    box-shadow: none;
 }
 
 
