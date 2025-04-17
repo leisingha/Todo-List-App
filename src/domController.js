@@ -105,9 +105,13 @@ export class DomController{
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = todoObj.isComplete();
-
+        
         const title = document.createElement('div');
         title.textContent = todoObj.title;
+        if(checkbox.checked){
+            title.classList.add('strikeThrough')
+        }
+
         
         const priority = document.createElement('div');
         priority.textContent = todoObj.priority;
