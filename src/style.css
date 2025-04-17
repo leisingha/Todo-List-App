@@ -102,7 +102,7 @@ main{
     gap: 0.25rem;
     margin-top: 1rem;
     padding-bottom: 0.35rem;
-    border-bottom: 1px solid var(--tertiary-colour);
+    border-bottom: 4px inset #393939;
 }
 
 .dropdown-button{
@@ -356,7 +356,6 @@ ul.styledList li{
 }
 
 .content p{
-    border-bottom: 1px solid var(--tertiary-colour);
     padding-bottom: 0.25rem;
 }
 
