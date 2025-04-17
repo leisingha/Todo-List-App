@@ -104,12 +104,12 @@ export class AppController{
 
     }
 
-    static updateTodo(todoListID,todoObj){
+    static updateTodo(todoListID,todoID){
         const projectID = document.querySelector('.content h2').dataset.projectID;
         const project = getCurrentProject(projectID);
-        project.container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoObj.id).toggleComplete();
+        project.container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoID).toggleComplete();
         populateStorage(project);
-        console.log(getCurrentProject(project.id).container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoObj.id).isComplete());
+        console.log(getCurrentProject(project.id).container.find(todoList => todoList.id == todoListID).container.find(todo => todo.id == todoID).isComplete());
         
     }
 }

@@ -188,7 +188,26 @@ function generateTodoList(projectID, title, desc, initialize=false){
     const todoListNode = DomController.addTodoList(projectID,todoList);
     todoListNode.addEventListener('click', (e) =>{
         const updatedTodoList = getCurrentProject(projectID).container.find(item => item.id == todoList.id);
-        DomController.populateMainPage(projectID,updatedTodoList, initialize);
+        const todoItems = DomController.populateMainPage(projectID,updatedTodoList, initialize);
+        
+        todoItems.querySelectorAll('input').forEach(input => {
+            input.addEventListener('click', (e) => {
+                const todoID = e.target.parentElement.dataset.id; // Get the todo ID from the parent element's dataset
+                const todoListID = todoList.id; // Reference the current todoList ID
+                const todo = getCurrentProject(projectID).container
+                    .find(todoList => todoList.id == todoListID)
+                    .container.find(todo => todo.id == todoID); // Find the correct todo object
+
+                if (todo) {
+                    todo.toggleComplete(); // Toggle the completion status
+                    DomController.toggleStrikeThrough(todoID); // Strike through the todo
+                    AppController.updateTodo(todoListID, todo.id); // Update the todo in storage
+                } else {
+                    console.error('Todo not found!');
+                }
+            });
+        });
+        
     });
 }
 
@@ -232,12 +251,8 @@ function generateTodo(todoListID, title, priority, dueDate){
     const todoNode = DomController.addTodo(todo);
     todoNode.querySelector('input').addEventListener('click', ()=>{
         todo.toggleComplete();
-        AppController.updateTodo(todoListID,todo);
-        if(todo.isComplete()){
-            DomController.toggleStrikeThrough(todo.id);
-        }else{
-            DomController.toggleStrikeThrough(todo.id)
-        }
+        DomController.toggleStrikeThrough(todo.id);
+        AppController.updateTodo(todoListID,todo.id);
     });
     todoNode.querySelector('button').addEventListener('click',()=>{
         AppController.removeTodo(todoListID, todo.id);

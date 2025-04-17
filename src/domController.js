@@ -177,6 +177,8 @@ export class DomController{
         todoListObj.container.forEach( todo => {
             this.#todoItems.appendChild(this.addTodo(todo));
         })
+        
+        return this.#todoItems;
     }
 
     static toggleStrikeThrough(todoID){
