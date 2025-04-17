@@ -178,4 +178,11 @@ export class DomController{
             this.#todoItems.appendChild(this.addTodo(todo));
         })
     }
+
+    static toggleStrikeThrough(todoID){
+        const todo = Array.from(document.querySelectorAll('.todos li')).find(item => item.dataset.id == todoID);
+        console.log(todo);
+        todo.querySelector('div:first-of-type').classList.toggle('strikeThrough');
+        
+    }
 }

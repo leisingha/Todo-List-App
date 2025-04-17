@@ -330,6 +330,11 @@ ul.styledList li{
 
 }
 
+.strikeThrough{
+    text-decoration:line-through;
+    color: var(--text-colour);
+}
+
 .content .banner{
     display: flex;
     gap: 1rem;
