@@ -14,45 +14,45 @@ if (localStorage.length === 0) {
 
 initializeDefaultPage();
 
-// function restorePreviousState() {
-//     // Restore all projects
-//     for (let i = 0; i < localStorage.length; i++) {
-//         const projectKey = localStorage.key(i);
-//         const project = getCurrentProject(projectKey);
-//         const projectNode = DomController.addProject(project, false);
+function restorePreviousState() {
+    // Restore all projects
+    for (let i = 0; i < localStorage.length; i++) {
+        const projectKey = localStorage.key(i);
+        const project = getCurrentProject(projectKey);
+        const projectNode = DomController.addProject(project, false);
         
-//         // Restore project event listeners
-//         const addProjectBtn = projectNode.querySelector('button');
-//         const renameBtn = projectNode.querySelector('#renameBtn');
-//         const removeBtn = projectNode.querySelector('#removeBtn');
+        // Restore project event listeners
+        const addProjectBtn = projectNode.querySelector('button');
+        const renameBtn = projectNode.querySelector('#renameBtn');
+        const removeBtn = projectNode.querySelector('#removeBtn');
 
-//         addProjectBtn.addEventListener('click', () => {
-//             todoListDialog.showModal();
-//             getTodoListInfo(project.id);
-//         });
+        addProjectBtn.addEventListener('click', () => {
+            todoListDialog.showModal();
+            getTodoListInfo(project.id);
+        });
 
-//         renameBtn.addEventListener('click', () => {
-//             editProjectDialog.showModal();
-//             editProjectInfo(project.id, projectNode);
-//         });
+        renameBtn.addEventListener('click', () => {
+            editProjectDialog.showModal();
+            editProjectInfo(project.id, projectNode);
+        });
 
-//         removeBtn.addEventListener('click', () => {
-//             AppController.removeProject(project.id);
-//             DomController.removeProject(project);
-//         });
+        removeBtn.addEventListener('click', () => {
+            AppController.removeProject(project.id);
+            DomController.removeProject(project);
+        });
 
-//         // Restore todo lists for this project
-//         project.container.forEach(todoList => {
-//             const todoListNode = DomController.addTodoList(project.id, todoList);
-//             // Add event listeners for todo list
-//             todoListNode.addEventListener('click', () => {
-//                 const updatedTodoList = getCurrentProject(project.id).container
-//                     .find(item => item.id === todoList.id);
-//                 DomController.populateMainPage(project.id, updatedTodoList, false);
-//             });
-//         });
-//     }
-// }
+        // Restore todo lists for this project
+        project.container.forEach(todoList => {
+            const todoListNode = DomController.addTodoList(project.id, todoList);
+            // Add event listeners for todo list
+            todoListNode.addEventListener('click', () => {
+                const updatedTodoList = getCurrentProject(project.id).container
+                    .find(item => item.id === todoList.id);
+                DomController.populateMainPage(project.id, updatedTodoList, false);
+            });
+        });
+    }
+}
 
 function initializeDefaultPage(){
     const button = document.querySelector('.styledList button')
