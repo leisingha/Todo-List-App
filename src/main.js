@@ -48,7 +48,25 @@ function restorePreviousState() {
             todoListNode.addEventListener('click', () => {
                 const updatedTodoList = getCurrentProject(project.id).container
                     .find(item => item.id === todoList.id);
-                DomController.populateMainPage(project.id, updatedTodoList, false);
+                const todoItems = DomController.populateMainPage(project.id, updatedTodoList, false);
+
+                todoItems.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('click', (e) => {
+                        const todoID = e.target.parentElement.dataset.id; // Get the todo ID from the parent element's dataset
+                        const todoListID = todoList.id; // Reference the current todoList ID
+                        const todo = getCurrentProject(project.id).container
+                            .find(todoList => todoList.id == todoListID)
+                            .container.find(todo => todo.id == todoID); // Find the correct todo object
+        
+                        if (todo) {
+                            todo.toggleComplete(); // Toggle the completion status
+                            DomController.toggleStrikeThrough(todoID); // Strike through the todo
+                            AppController.updateTodo(todoListID, todo.id); // Update the todo in storage
+                        } else {
+                            console.error('Todo not found!');
+                        }
+                    });
+                });
             });
         });
     }
