@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<script defer src="main.js"></script></head>
+<body>
+    <header>
+        <nav>
+            <h1>Todo List</h1>
+            <button>
+                Info
+            </button>
+        </nav>
+    </header>
+    <main>
+        <div class="sidebar">
+            <h2>
+                Projects 📥
+            </h2>
+            <ul class="project-list">
+                
+            </ul>
+            <button class="add-btn" id="addProject-btn">
+                Add Project
+            </button>
+            <dialog id="projectListDialog">
+                <form action="" id="project-form">
+                    <h2>
+                        Add Project 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+
+                    
+                </form>
+            </dialog>
+
+            <dialog id="editProjectListDialog">
+                <form action="" id="renameProject-form">
+                    <h2>
+                        Edit Project 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+
+                    
+                </form>
+            </dialog>
+
+            <dialog id="todoListDialog">
+                <form action="" id="todoList-form">
+                    <h2>
+                        Add To-do List 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+    
+                    <div>
+                        <label for="desc-input">Description 📑</label>
+                        <input type="text" name="desc-input" id="desc-input">
+                    </div>
+    
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
+            <dialog id="updateTodoListDialog">
+                <form action="" id="updateTodoList-form">
+                    <h2>
+                        Edit To-do List 📝
+                    </h2>
+    
+                    <div>
+                        <label for="title-input">Title 🔤</label>
+                        <input type="text" name="title-input" id="title-input" required>
+                    </div>
+    
+                    <div>
+                        <label for="desc-input">Description 📑</label>
+                        <input type="text" name="desc-input" id="desc-input">
+                    </div>
+    
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
+            <input type="search" placeholder="Search">
+        </div>
+        <div class="content">
+            <div class="banner">
+                <h2>
+                
+                </h2>
+                <button id="editBtn">🖊️</button>
+                <button id='deleteBtn'>🗑️</button>
+            </div>
+            <p>
+                
+            </p>
+            <ul class="todos">
+            
+            </ul>
+            <button class="add-btn" id="addTodo-btn">Add Task</button>
+            <dialog id="todoDialog">
+                <form action="" id="todo-form">
+                    <h2>
+                        Add To-do Item 📝
+                    </h2>
+    
+                    <div>
+                        <label for="text-input">Title 🔤</label>
+                        <input type="text" name="text-input" id="text-input">
+                    </div>
+    
+                    <div>
+                        <label for="date-input">Due Date 📅</label>
+                        <input type="date" name="date-input" id="date-input">
+                    </div>
+    
+                    <div>
+                        <label for="priority-input">Priority ‼️</label>
+                        <select name="priority-input" id="priority-input">
+                            <option value="">Choose Priority:</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+    
+                    <div class="btn-pair">
+                        <button id="btn-cancel" type="submit">
+                            Cancel
+                        </button>
+                        <button id="btn-confirm" type="submit">
+                            Confirm
+                        </button>
+                    </div>
+                    
+                </form>
+            </dialog>
+        </div>
+    </main>
+</body>
+</html>
