@@ -251,6 +251,11 @@ function generateProject(title, initialize=false){
         AppController.removeProject(project.id);
         DomController.removeProject(project);
     })
+
+    if(initialize){
+        renameBtn.disabled = true;
+        removeBtn.disabled = true;
+    }
 }
 
 function generateTodoList(projectID, title, desc, initialize=false){
