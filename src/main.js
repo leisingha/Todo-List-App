@@ -67,6 +67,16 @@ function restorePreviousState() {
                         }
                     });
                 });
+
+                todoItems.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click', (e) =>{
+                        const todoID = e.target.parentElement.dataset.id;
+                        const todoListID = todoList.id;
+                        AppController.removeTodo(todoListID, todoID);
+                        DomController.removeTodo(todoID);
+                    })
+                })
+                
             });
         });
     }
