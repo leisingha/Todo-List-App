@@ -87,8 +87,6 @@ function initializeDefaultPage(){
     button.dispatchEvent(new Event("click"));
 }
 
-
-
 const projectDialog = document.querySelector('#projectListDialog');
 const todoListDialog = document.querySelector('#todoListDialog')
 const todoDialog = document.querySelector('#todoDialog');
@@ -122,6 +120,12 @@ deleteBtn.addEventListener('click', (e)=>{
     AppController.removeTodoList(projectID, todoListID);
     DomController.removeTodolist(todoListID);
     initializeDefaultPage();
+})
+
+const searchBox = document.querySelector('input[type=search]');
+searchBox.addEventListener('input', (e)=>{
+    DomController.renderFilteredProject(e.target.value)
+    console.log('its working')
 })
 
 
@@ -334,4 +338,8 @@ function generateTodo(todoListID, title, priority, dueDate){
         AppController.removeTodo(todoListID, todo.id);
         DomController.removeTodo(todo.id);
     })  
+}
+
+function searchProject(){
+
 }

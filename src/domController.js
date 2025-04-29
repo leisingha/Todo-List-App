@@ -196,4 +196,12 @@ export class DomController{
         todo.querySelector('div:first-of-type').classList.toggle('strikeThrough');
         
     }
+
+    static renderFilteredProject(text){
+        this.#projectList.querySelectorAll('.titleContainer').forEach(project =>{
+            const projectItem = project.parentNode.parentNode;
+            const match = project.textContent.toLowerCase().includes(text.toLowerCase());
+            projectItem.style.display = match ? 'block' : 'none';
+        })
+    }
 }
